@@ -1,0 +1,56 @@
+.menu{
+  float: right;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 30vh;
+  background-color: rgb(240, 240, 240);
+  color: black;
+  text-align: center;
+}
+.guzik{
+  background-color: transparent;
+  margin: auto;
+  float: right;
+}
+.exit{
+  background-color: transparent;
+  float: left;
+  position: bottom;
+}
+.search{
+  width: 80%;
+  height: 40px;
+  background-color: lightgrey;
+  color: black;
+  border-radius: 25px;
+}
+h1{
+  font-size: 80%;
+  margin-left: 50px;
+}
+p{
+  margin-top: 0;
+  font-weight:lighter;
+}
+ul{
+  list-style: none;
+  float: left;
+  text-align: left;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+li{
+  border-radius: 10px;
+}
+li:hover{
+  background-color: #D3D3D3;
+  /* color: white; */
+}
+
+.icon{
+  width: 20%;
+  height: auto;
+  float: left;
+  border-radius: 7px;
+}
