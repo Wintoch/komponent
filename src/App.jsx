@@ -1,44 +1,68 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import React from 'react'
 import useToggle from '../hooks/useToggle'
-//import devices from '../import/devices.js'
-//import pl_desc from "../import/pl_desc.json"
-import axios, * as others from 'axios';
+import { devices } from './devices'
+import {ElementsContext} from './ElementsContext';
+import Sortowanie from './Sortowanie';
 
 function App() {
-
-  const Url = "http://localhost:8080/"
+  
   const[click,clickChange] = useToggle("");
   const[kategorie,clickKategorie] = useToggle("");
+  
+
+  const Url = "http://localhost:8080/"
   const [data,setData] = useState([]);
 
-    useEffect(()=>{
-      const fetchData = async () => {
-      const result = await fetch(Url, {mode:'cors'});
-      const parsed = await result.json();
-      //console.log(parsed)
-      setData(parsed)
-      //console.log(data)
-    }
-    return () =>{
-      fetchData();
-    }
-    },[])
+  useEffect(()=>{
+    const fetchData = async () => {
+    const result = await fetch(Url, {mode:'cors'});
+    const parsed = await result.json();
+    setData(parsed);
+  }
+  return () =>{
+    fetchData();
+  }
+  },[])
 
-    const test = Object.entries(data)
-    //console.log(test)
+  const jsonArray = Object.entries(data);
+  const devicesArray = Object.entries(devices);
+
+  function liSort(event){
+      event.stopPropagation();
+      return jsonArray.map((index)=>{
+        return(
+          devicesArray.map((index2, key)=>{
+            if(index[0] == index2[0] && index2[1].category == event.currentTarget.className){
+              console.log(event.currentTarget.className)
+                return(
+                    <li key={key}>
+                      <img className="icon" src={`https://www.satel.eu/img/products/xl/${index2[0]}.jpg`}/>
+                      <h1>{index2[0]}
+                        <p>{index[1].name}</p>                                    
+                      </h1>
+                    </li>
+                )                            
+            }
+          })
+      );
+    });
+  }
+
 
   function handleEvent(event){
       clickChange(click,event);
     };
     const handleLista = (event) =>{
       clickKategorie(kategorie,event);
-      event.stopPropagation();
     }
-  return (      
+
+  return (  
+
     <>
                   
-      {click == true ? (
+      {click == false ? (
         <div className="menu">
           <button
           className='exit'
@@ -55,28 +79,16 @@ function App() {
             >Kategorie 
             {kategorie == true &&
                 <ul className='listarozwijana'>
-                  <li className='controlPanels'>Centrale sygnalizacji pożarowej</li>
-                  <li className='repeaterPanels'>Urządzenia zdalnej obsługi</li>
-                  <li className='detectors'>Czujki</li>
-                  <li className='callPoints'>Ręczne ostrzegacze</li>
-                  <li className='sirens'>Sygnalizatory</li>
-                  <li className='accessories'>Akcesoria</li>
-                  <li className='communication'>Programy</li>
-                </ul>
+                  <li  onClick={liSort} className='controlPanels'>Centrale sygnalizacji pożarowej<ul><Sortowanie/></ul></li>
+                  <li  className='repeaterPanels'>Urządzenia</li>
+                  <li  className='detectors'>Czujki</li>
+                  <li  className='callPoints'>Ręczne ostrzegacze</li>
+                  <li  className='sirens'>Sygnalizatory</li>
+                  <li  className='accessories'>Akcesoria</li>
+                  <li  className='communication'>Programy</li>                                     
+              </ul>
             }
-            </li>
-            {/* {test.map((index) => {
-              console.log(index)
-               return(
-                <li key={index}>
-                  <img className="icon" src={`https://www.satel.eu/img/products/xl/${index[0]}.jpg`}/>
-                  <h1>{index[0]}
-                    <p>{index[1].name}</p>
-                  </h1>
-                </li>
-               )
-              })
-            } */}
+          </li> 
          </ul>  
         </div>
       ):(
@@ -88,6 +100,7 @@ function App() {
       }
 
     </>
+
   )
 }
 

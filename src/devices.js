@@ -1,21 +1,22 @@
 /* Two category of systems: C - conventional - 1, A - addressable, 2 */
-module.exports.System = {
+
+export const System = {
     C: 1,
     A: 2,
 }
 
-module.exports.Topology = {
+export const Topology = {
     Ring: 1,
     Radial: 2,
     Hybrid: 3,
 }
 
-module.exports.ConnectionType = {
+export const ConnectionType = {
     Line: 1,
     Loop: 2,
 }
 
-module.exports.wires = [
+export const wires = [
     {
         surface: 0.5,
         nominal: 195.6,
@@ -56,12 +57,12 @@ module.exports.wires = [
 
 
 
-module.exports.devices = {
+export const devices = {
     'ACSP-402': {
         category: 'controlPanels',
         iconType: 8,
         dwgIconType: 1,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             maxWeight: 640,
             maxDevices: {
@@ -88,7 +89,7 @@ module.exports.devices = {
         range: 'CIRCLE62',
         iconType: 6,
         dwgType: 3,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.45,
@@ -109,7 +110,7 @@ module.exports.devices = {
         range: 'CIRCLE45',
         iconType: 6,
         dwgIconType: 4,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.45,
@@ -130,7 +131,7 @@ module.exports.devices = {
         range: 'CIRCLE45',
         iconType: 6,
         dwgIconType: 5,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.5,
@@ -147,7 +148,7 @@ module.exports.devices = {
     },
     'DB-400': {
         category: 'detectors',
-        system: [module.exports.System.A],
+        system: [System.A],
         hidden: true,
         features: {},
         languages: [
@@ -161,7 +162,7 @@ module.exports.devices = {
     },
     'WZ-400': {
         category: 'detectors',
-        system: [module.exports.System.A],
+        system: [System.A],
         iconType: 2,
         dwgIconType: 9,
         features: {
@@ -180,7 +181,7 @@ module.exports.devices = {
     },
     'DB-100': {
         category: 'detectors',
-        system: [module.exports.System.A],
+        system: [System.A],
         hidden: true,
         features: {},
         languages: [
@@ -197,7 +198,7 @@ module.exports.devices = {
         iconType: 6,
         dwgIconType: 3,
         range: 'CIRCLE45',
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         accessory: ['DB-100'],
         features: {
             weight: 0
@@ -219,7 +220,7 @@ module.exports.devices = {
     },
     'DCP-100': {
         category: 'detectors',
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         accessory: ['DB-100'],
         range: 'CIRCLE62',
         iconType: 6,
@@ -244,7 +245,7 @@ module.exports.devices = {
     },
     'DMP-100': {
         category: 'detectors',
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         accessory: ['DB-100'],
         range: 'CIRCLE45',
         iconType: 6,
@@ -269,7 +270,7 @@ module.exports.devices = {
     },
     'WZ-110': {
         category: 'detectors',
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         features: {
             weight: 0
         },
@@ -293,7 +294,7 @@ module.exports.devices = {
         category: 'callPoints',
         iconType: 5,
         dwgIconType: 7,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.17,
@@ -307,7 +308,7 @@ module.exports.devices = {
         category: 'callPoints',
         iconType: 5,
         dwgIconType: 7,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.17,
@@ -321,7 +322,7 @@ module.exports.devices = {
         category: 'callPoints',
         iconType: 5,
         dwgIconType: 7,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.17,
@@ -339,7 +340,7 @@ module.exports.devices = {
         category: 'callPoints',
         iconType: 5,
         dwgIconType: 7,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 5,
             supervisionCurrency: 0.17,
@@ -356,7 +357,7 @@ module.exports.devices = {
 
     'ROP-110/PL': {
         category: 'callPoints',
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         iconType: 5,
         dwgIconType: 7,
         features: {
@@ -376,7 +377,7 @@ module.exports.devices = {
         category: 'callPoints',
         iconType: 5,
         dwgIconType: 7,
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         features: {
             weight: 0
         },
@@ -396,7 +397,7 @@ module.exports.devices = {
     },
     'ROP-111/PL': {
         category: 'callPoints',
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         iconType: 5,
         dwgIconType: 7,
         features: {
@@ -416,7 +417,7 @@ module.exports.devices = {
         category: 'callPoints',
         iconType: 5,
         dwgIconType: 7,
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         features: {
             weight: 0
         },
@@ -438,7 +439,7 @@ module.exports.devices = {
         category: 'sirens',
         iconType: 4,
         dwgIconType: 8,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 16,
             supervisionCurrency: 0.25,
@@ -457,7 +458,7 @@ module.exports.devices = {
         category: 'sirens',
         iconType: 4,
         dwgIconType: 8,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 16,
             supervisionCurrency: 0.25,
@@ -476,7 +477,7 @@ module.exports.devices = {
         category: 'sirens',
         iconType: 4,
         dwgIconType: 8,
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         features: {
             supervisionCurrency: 0,
             alarmCurrency:  7,
@@ -494,7 +495,7 @@ module.exports.devices = {
         category: 'sirens',
         iconType: 4,
         dwgIconType: 8,
-        system: [module.exports.System.A, module.exports.System.C],
+        system: [System.A, System.C],
         features: {
             supervisionCurrency: 0,
             alarmCurrency:  7,
@@ -512,7 +513,7 @@ module.exports.devices = {
     'ACSP-ETH': {
         category: 'communication',
         iconType: 7,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {},
         languages: [
             'pl',
@@ -526,7 +527,7 @@ module.exports.devices = {
     'ACSP-RSI': {
         category: 'communication',
         iconType: 7,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {},
         languages: [
             'pl',
@@ -541,7 +542,7 @@ module.exports.devices = {
         category: 'communication',
         iconType: 3,
         dwgIconType: 6,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 20,
             supervisionCurrency: 0.6,
@@ -560,7 +561,7 @@ module.exports.devices = {
         category: 'communication',
         iconType: 1,
         dwgIconType: 10,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {
             weight: 128,
             supervisionCurrency: 0.4,
@@ -580,7 +581,7 @@ module.exports.devices = {
         category: 'repeaterPanels',
         iconType: 9,
         dwgIconType: 2,
-        system: [module.exports.System.A],
+        system: [System.A],
         features: {},
         languages: [
             'pl',
@@ -593,22 +594,22 @@ module.exports.devices = {
     },
 };
 
-module.exports.categories = [
+export const categories = [
     'controlPanels',
     'detectors',
     'callPoints',
     'sirens',
     'communication',
     'repeaterPanels',
-    // 'accessories',
+    // 'accessories';
 ];
 
-module.exports.devices2Categories = (function getCategories() {
+export const devices2Categories = (function getCategories() {
     const cat = {};
-    module.exports.categories.forEach((category) => {
+    categories.forEach((category) => {
         cat[category] = {};
     });
-    Object.entries(module.exports.devices).forEach(([symbol, device]) => {
+    Object.entries(devices).forEach(([symbol, device]) => {
         cat[device.category] = {
             ...cat[device.category],
             [symbol]: device,
@@ -617,9 +618,9 @@ module.exports.devices2Categories = (function getCategories() {
     return cat;
 }());
 
-module.exports.getDeviceData = (symbol) => {
+export const getDeviceData = (symbol) => {
     try {
-        return module.exports.devices[symbol];
+        return devices[symbol];
     } catch (e) {
         return null;
     }
