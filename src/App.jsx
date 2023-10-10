@@ -29,13 +29,13 @@ function App() {
   const jsonArray = Object.entries(data);
   const devicesArray = Object.entries(devices);
 
-  function liSort(event){
+  function LiSort(event){
       event.stopPropagation();
       return jsonArray.map((index)=>{
         return(
           devicesArray.map((index2, key)=>{
             if(index[0] == index2[0] && index2[1].category == event.currentTarget.className){
-              console.log(event.currentTarget.className)
+             console.log(event.currentTarget.className)
                 return(
                     <li key={key}>
                       <img className="icon" src={`https://www.satel.eu/img/products/xl/${index2[0]}.jpg`}/>
@@ -49,7 +49,6 @@ function App() {
       );
     });
   }
-
 
   function handleEvent(event){
       clickChange(click,event);
@@ -79,7 +78,7 @@ function App() {
             >Kategorie 
             {kategorie == true &&
                 <ul className='listarozwijana'>
-                  <li  onClick={liSort} className='controlPanels'>Centrale sygnalizacji pożarowej<ul><Sortowanie/></ul></li>
+                  <li  onClick={LiSort} className='controlPanels'>Centrale sygnalizacji pożarowej<ul>{LiSort(event)}</ul></li>
                   <li  className='repeaterPanels'>Urządzenia</li>
                   <li  className='detectors'>Czujki</li>
                   <li  className='callPoints'>Ręczne ostrzegacze</li>
