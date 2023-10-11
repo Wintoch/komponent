@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './App.css'
 import React from 'react'
 import useToggle from '../hooks/useToggle'
@@ -10,7 +10,7 @@ function App() {
   
   const[click,clickChange] = useToggle("");
   const[kategorie,clickKategorie] = useToggle("");
-  
+  const[urzadzenia, setUrzadzenia] = useState([]);
 
   const Url = "http://localhost:8080/"
   const [data,setData] = useState([]);
@@ -28,26 +28,41 @@ function App() {
 
   const jsonArray = Object.entries(data);
   const devicesArray = Object.entries(devices);
+  const test = [];
 
-  function LiSort(event){
-      event.stopPropagation();
-      return jsonArray.map((index)=>{
-        return(
-          devicesArray.map((index2, key)=>{
-            if(index[0] == index2[0] && index2[1].category == event.currentTarget.className){
-             console.log(event.currentTarget.className)
-                return(
-                    <li key={key}>
-                      <img className="icon" src={`https://www.satel.eu/img/products/xl/${index2[0]}.jpg`}/>
-                      <h1>{index2[0]}
-                        <p>{index[1].name}</p>                                    
-                      </h1>
-                    </li>
-                )                            
-            }
-          })
-      );
-    });
+  const LiSort =()=> jsonArray.map((index)=>{
+                  return(
+                    devicesArray.map((index2)=>{
+                        if(index[0] == index2[0]){
+                          return test.push({
+                              name: index[0],
+                              description: index[1].description,
+                              category: index2[1].category,
+                            });
+                              // <ul>
+                              //   <li key={key}>
+                              //     <img className="icon" src={`https://www.satel.eu/img/products/xl/${index2[0]}.jpg`}/>
+                              //     <h1>{index2[0]}
+                              //       <p>{index[1].name}</p>                                    
+                              //     </h1>
+                              //   </li>
+                              // </ul>
+                          }
+                        })
+                  )}
+                )
+
+  LiSort();
+  
+  function ref(event){
+    event.stopPropagation();
+    const cat = event.currentTarget.className;
+  }
+
+  function pokaz(){
+    test.map(index=>{
+      console.log(index[0])
+    })
   }
 
   function handleEvent(event){
@@ -78,13 +93,13 @@ function App() {
             >Kategorie 
             {kategorie == true &&
                 <ul className='listarozwijana'>
-                  <li  onClick={LiSort} className='controlPanels'>Centrale sygnalizacji pożarowej<ul>{LiSort(event)}</ul></li>
                   <li  className='repeaterPanels'>Urządzenia</li>
+                  <li  onClick={ref}className='controlPanels'>Centrale sygnalizacji pożarowej</li>
                   <li  className='detectors'>Czujki</li>
                   <li  className='callPoints'>Ręczne ostrzegacze</li>
                   <li  className='sirens'>Sygnalizatory</li>
                   <li  className='accessories'>Akcesoria</li>
-                  <li  className='communication'>Programy</li>                                     
+                  <li  className='communication'>Programy</li>
               </ul>
             }
           </li> 
